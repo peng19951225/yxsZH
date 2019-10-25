@@ -9,9 +9,12 @@
       <swiper-slide v-for="(v,i) in lbarr">
         <img :src="v.picUrl" alt />
       </swiper-slide>
-      
+
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
+
+     
+
     <!-- 轮播图下的4个选项 -->
     <div id="list-menu-box">
       <div>
@@ -42,7 +45,11 @@
         </router-link>
       </p>
       <div v-for="(v,i) in barginlist" v-if="v.categoryId !== 15119" class="list-body-bargin-box">
-        <router-link :to="'/commodity/'+v.id+'/'+'bargin'" tag="div" class="list-body-bargin-box_div">
+        <router-link
+          :to="'/commodity/'+v.id+'/'+'bargin'"
+          tag="div"
+          class="list-body-bargin-box_div"
+        >
           <img :src="v.pic" alt />
           <div>
             <p class="bargin-box_til">{{v.name}}</p>
@@ -113,6 +120,10 @@
 import Product from "../axioss/services/list-service";
 const _product = new Product();
 import Listfoot from "../components/list-foot";
+import Vue from "vue";
+import { Swipe, SwipeItem } from "vant";
+
+Vue.use(Swipe).use(SwipeItem);
 export default {
   data() {
     return {
@@ -136,6 +147,11 @@ export default {
         // }
       },
       lbarr: [],
+       images: [
+        'https://tsplus.zhibocloud.cn/api/v2/files/7837',
+        'https://tsplus.zhibocloud.cn/api/v2/files/7838',
+        'https://tsplus.zhibocloud.cn/api/v2/files/19637'
+      ],
       // 全民砍价---------------------------------
       barginlist: [],
       // 精选专题---------------------------------

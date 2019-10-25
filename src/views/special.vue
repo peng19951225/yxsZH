@@ -34,10 +34,6 @@ export default {
     };
   },
   created() {
-    // this.$axios.get("https://api.it120.cc/small4/cms/news/list").then(res => {
-    //   console.log(res.data.data);
-    //   this.moods = res.data.data;
-    // });
     _product.moodslist().then(res => {
       this.moods = res.data.data;
     });

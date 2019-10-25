@@ -12,6 +12,7 @@
     <div class="class_list">
       <div v-for="(v,i) in lists" >
         <img :src="v.icon" alt />
+        <p style="font-size:14px;">{{v.name}}</p>
       </div>
     </div>
     <Listfoot></Listfoot>
@@ -52,7 +53,7 @@ export default {
   },
 
   created() {
-    console.log();
+    console.log(this.list);
     _product.classifyUrl().then(res => {
       console.log(res.data.data);
       this.list = res.data.data;
@@ -100,8 +101,9 @@ export default {
     flex-wrap: wrap;
     overflow: auto;
     div {
-      width: 1.8rem;
-      height: 1.8rem;
+      width: 1.4rem;
+      height: auto;
+      margin: 10px;
     }
     img {
       width: 1.6rem;

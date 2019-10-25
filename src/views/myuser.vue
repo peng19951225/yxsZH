@@ -4,9 +4,9 @@
       <span class="user-box-sp">
         <i class="el-icon-user-solid"></i>
       </span>
-      <router-link to="/userDL" tag="p" v-show="this.$store.state.list == ''">点击登录</router-link>
-      <p v-show="this.$store.state.list !== ''">{{this.$store.state.list.uid}}</p>
-      
+      <router-link to="/userDL" tag="p" v-show="this.$store.state.userTokens == ''" style="min-width: 60%;">点击登录</router-link>
+      <p v-show="this.$store.state.userTokens !== ''">{{this.$store.state.userTokens.uid}}</p>
+      <button v-show="this.$store.state.userTokens !== ''" @click="tuiUser()">退出登录</button>
     </div>
 
     <p class="user-news">
@@ -77,6 +77,10 @@ import Listfoot from "../components/list-foot";
 export default {
   components: {
     Listfoot
+  },methods:{
+    tuiUser(){
+      this.$store.commit('tuiUser')
+    }
   }
 };
 </script>
@@ -91,7 +95,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  padding: 0 2.8rem 0 1rem;
+  padding: 0 1rem;
   .user-box-sp {
     width: 1.5rem;
     height: 1.5rem;
@@ -103,6 +107,7 @@ export default {
     font-size: 0.6rem;
   }
   p {
+    
     font-size: 0.4rem;
     font-weight: 550;
   }

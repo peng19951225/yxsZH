@@ -10,6 +10,12 @@ import axios from 'axios'
 import store from './store/index'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+
+
+
+
+import { Swipe, SwipeItem } from "vant";
+Vue.use(Swipe).use(SwipeItem);
 Vue.use(ElementUI)
 Vue.use(VueAwesomeSwiper)　　
 Vue.config.productionTip = false

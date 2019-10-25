@@ -38,7 +38,7 @@
           <el-form-item prop="imgcode" class="code">
             <el-input v-model="ruleForm2.imgcode" placeholder="请输入图形验证码"></el-input>
             <div>
-              <img :src="`https://api.it120.cc/small4/verification/pic/get?key=${this.ruleForm2.sjnum}`" alt />
+              <img :src="imgUrl()" alt  @click="imgl()"/>
             </div>
           </el-form-item>
 
@@ -119,6 +119,7 @@ export default {
         tel: "",
         smscode: "",
         imgcode: "",
+        imgUrls:'',
         sjnum:Math.floor(Math.random()*100)
       },
       rules2: {
@@ -130,7 +131,8 @@ export default {
       },
       buttonText: "发送验证码",
       isDisabled: false, // 是否禁止点击发送验证码按钮
-      flag: true
+      flag: true,
+      
     };
   },
   methods: {
@@ -200,6 +202,14 @@ export default {
       } else {
         return false;
       }
+    },
+    imgl(){
+      this.ruleForm2.sjnum = Math.floor(Math.random()*100)
+      this.imgUrls= `https://api.it120.cc/small4/verification/pic/get?key=${this.ruleForm2.sjnum}`
+
+    },
+    imgUrl(){
+        return this.imgUrls= `https://api.it120.cc/small4/verification/pic/get?key=${this.ruleForm2.sjnum}`
     }
   }
 };

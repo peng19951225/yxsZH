@@ -31,51 +31,87 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: List
+      component: List,
+      meta: {
+        index: 0
+      }
     },
     {
       path: '/sigin',
-      component: Sigin
+      component: Sigin,
+      meta: {
+        index: 1
+      }
     },
     {
       path: '/gift',
-      component: Gift
+      component: Gift,
+      meta: {
+        index: 2
+      }
     },
     {
       path: '/listcomponent/:type?',
-      component: Listcomponent
+      component: Listcomponent,
+      meta: {
+        index: 3
+      }
     },
     {
       path: "/commodity/:id?/:type?",
-      component: Commodity
+      component: Commodity,
+      meta: {
+        index: 4
+      }
     },
     {
       path: '/special',
-      component: Special
+      component: Special,
+      meta: {
+        index: 5
+      }
     },
     {
       path: '/special/:id?',
-      component: Specialbot
+      component: Specialbot,
+      meta: {
+        index: 6
+      }
     },
     {
       path: '/classify',
-      component: Classify
+      component: Classify,
+      meta: {
+        index: 7
+      }
     },
     {
       path: '/cart',
-      component: Cart
+      component: Cart,
+      meta: {
+        index: 8
+      }
     },
     {
       path: '/myuser',
-      component: Myuser
+      component: Myuser,
+      meta: {
+        index: 9
+      }
     },
     {
       path: '/userZC',
-      component: UserZC
+      component: UserZC,
+      meta: {
+        index: 10
+      }
     },
     {
       path: '/userDL',
-      component: UserDL
+      component: UserDL,
+      meta: {
+        index: 11
+      }
     }
   ]
 })

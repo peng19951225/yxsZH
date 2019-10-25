@@ -1,12 +1,12 @@
 <template>
   <div class="barginxqy-boss">
     <Returnzj></Returnzj>
-    
+
     <swiper :options="swiperOption" class="list-lb-swiper">
       <swiper-slide v-for="(v,i) in list.pics">
         <img :src="v.pic" alt />
       </swiper-slide>
-      
+
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
 
@@ -17,8 +17,9 @@
     <div>
       <div class="barginxqy-html" v-html="this.list.content"></div>
     </div>
-    
-   
+
+    <Ljkanjia v-if="bottontype == 'bargin'"></Ljkanjia>
+    <Ljgoumai v-if="bottontype == 'recommend'"></Ljgoumai>
   </div>
 </template>
 
@@ -26,9 +27,15 @@
 import Product from "../axioss/services/list-service";
 import Returnzj from "./returnzj";
 const _product = new Product();
+
+import Ljkanjia from "../components/ljkanjia";
+import Ljgoumai from "../components/ljgoumai";
+
 export default {
   components: {
-    Returnzj
+    Returnzj,
+    Ljgoumai,
+    Ljkanjia
   },
   data() {
     return {
@@ -51,26 +58,23 @@ export default {
         //   prevEl: ".swiper-button-prev"
         // }
       },
+      bottontype: ""
     };
   },
-  methods: {
-    myleft() {
-      if (this.imglet >= this.list.pics.length * 400) {
-        this.imglet = 0;
-      } else {
-        this.imglet += 430;
-      }
-    }
-  },
-  mounted() {
-    this.timer = setInterval(this.myleft, 900);
-  },
+  methods: {},
+
   created() {
     _product.recommendurl(this.$route.params.id).then(res => {
       this.list = res.data.data;
       console.log(this.list);
     });
-    
+    console.log(this.$route.params.type);
+    let Mtype = this.$route.params.type;
+    if (Mtype == "recommend") {
+      this.bottontype = "recommend";
+    } else if (Mtype == "bargin") {
+      this.bottontype = "bargin";
+    }
   }
 };
 </script>
@@ -124,5 +128,4 @@ export default {
     }
   }
 }
-
 </style>
